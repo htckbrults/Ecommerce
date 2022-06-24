@@ -15,5 +15,11 @@ namespace UdemySiparis.Data.Repository
         {
             _context = context;
         }
+
+        public int IncreaseCount(Cart cart, int count)
+        {
+            cart.Count += count;
+            return cart.Count;
+        }
     }
 }

@@ -25,7 +25,7 @@
                                     </div>
 
                                     <div class="col-lg-4">
-                                        <span> <a href="#" class="btn btn-danger mx-2"> - </a> <span> @item.Count </span> <span> <a href="#" class="btn btn-primary mx-2"> + </a> </span> </span>
+                                        <span> <a asp-action="Decrease" asp-route-cartId="@item.Id" class="btn btn-danger mx-2"> - </a> <span> @item.Count </span> <span> <a asp-action="Increase" asp-route-cartId="@item.Id" class="btn btn-primary mx-2"> + </a> </span> </span>
                                     </div>
                                     <div classs="col-lg-4 m-0">
                                         <span> TOTAL :@item.Price.ToString("c") </span>
@@ -46,7 +46,7 @@
         <div class="card container p-0">
             <div class="card-header bg-primary text-Light m-0 p-0 row">
                 <div class="col-12 col-md-6">
-                    <span class="text-white mt-1"> ORDER SUMMERY </span>
+                    <span class="text-white mt-1"> ORDER SUMMARY </span>
                 </div>
             </div>
             <div class="card-body container ">
@@ -69,7 +69,7 @@
                             <div class="row">
                                 <br />
                                 <br />
-                                <a asp-action="AddToOrder" class="btn btn-success form-control"> Approve </a>
+                                <a asp-action="Order" class="btn btn-success form-control"> Approve </a>
                             </div>
                         </div>
                     </div>

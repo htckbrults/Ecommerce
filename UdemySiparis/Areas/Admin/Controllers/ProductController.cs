@@ -3,10 +3,12 @@ using UdemySiparis.Data.Repository.IRepository;
 using UdemySiparis.Models;
 using UdemySiparis.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace UdemySiparis.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class ProductController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

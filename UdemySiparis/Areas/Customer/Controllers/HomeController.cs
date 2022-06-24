@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using UdemySiparis.Data.Repository.IRepository;
 using UdemySiparis.Models;
@@ -32,6 +33,7 @@ namespace UdemySiparis.Areas.Customer.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Details(Cart cart)
         {
             var claimIdentity = (ClaimsIdentity)User.Identity;
@@ -51,13 +53,23 @@ namespace UdemySiparis.Areas.Customer.Controllers
 
                     _unitOfWork.Cart.Add(cart);
                     _unitOfWork.Save();
+                    int cartCount = _unitOfWork.Cart.GetAll(u => u.AppUserId == claim.Value).ToList().Count();
+                    HttpContext.Session.SetInt32("SessionCartCount", cartCount);
+                   
+
 
                     //Kaydet- Sessionda sepetteki ürün adetini sakla
                 }
                 else
                 {
+                    cartDb.Count += cart.Count;
+                    _unitOfWork.Save();
                     //Count u gelen kadar arttır sonrasında kaydet
                 }
+                
+                
+
+
                 return RedirectToAction("Index");
 
             }

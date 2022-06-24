@@ -25,9 +25,6 @@
                         <th>
                             Price
                         </th>
-                         <th>
-                            Status
-                        </th>
                         <th>
                             Processes
                         </th>
@@ -43,16 +40,14 @@
                 
 
                     <tr>
-                       <td>@orderProduct.Id" </td>
+                       <td>@orderProduct.Id</td>
                         <td>@orderProduct.Name </td>
                         <td>@orderProduct.OrderPrice </td>
-                        <td>@orderProduct.OrderStatus</td>
-
                         <td>
-                         <a asp-area="Admin" asp-controller="Order" asp-action="Details" asp-route-id="@orderProduct.Id" class="btn btn-primary">
-                             Details
-                         </a>
                         
+                         <a onclick="return confim ('Are you sure to delete?');" asp-area="Customer" asp-controller="Order" asp-action="Cancel" asp-route-id="@orderProduct.Id" class="btn btn-danger">
+                              Cancel
+                         </a>
                          </td>>
                         
                     </tr>
